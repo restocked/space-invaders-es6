@@ -1,13 +1,13 @@
 'use strict';
 
-var main = () => {
-  var buildDom = (html) => {
+const main = () => {
+  const buildDom = (html) => {
     return document.querySelector('main').innerHTML = html;
   }
 
 
 // --- Home Page ---
- var homePage = () => {
+ const homePage = () => {
     buildDom(`
             <section>
                 <audio src="./src/01 Stage Intro.mp3" autoplay></audio>
@@ -29,7 +29,7 @@ var main = () => {
 
 
 // --- Leaderboard Page ---
- var leaderboardPage = () => {
+ const leaderboardPage = () => {
     buildDom(`
             <section>
                 <h1>High Scores</h1>
@@ -45,7 +45,7 @@ var main = () => {
         `);
     let leaderboardData = getLeaderboardData()
     leaderboardData.splice(0,10).forEach((element) => {
-      var node = document.createElement("LI")
+      const node = document.createElement("LI")
       node.innerHTML = `${element.name} | ${element.score} | ${element.level}`;
       document.querySelector('#score').appendChild(node);
     })
@@ -55,7 +55,7 @@ var main = () => {
 
 
 // --- Instructions Page ---
- var instructionsPage = () => {
+ const instructionsPage = () => {
     buildDom(`
       <section>
         <h1>Instructions</h1>
@@ -75,7 +75,7 @@ var main = () => {
 
 
 // --- Settings page ---
- var settingsPage = () => {
+ const settingsPage = () => {
     buildDom(`
             <section>
                 <h1>Settings</h1>
@@ -92,7 +92,7 @@ var main = () => {
   }
 
   // --- Game page ---
- var playingPage = () => {
+ const playingPage = () => {
     buildDom(`
             <section class="game-container">
                 <audio src="./src/12 Unknown.mp3" autoplay loop></audio>
@@ -160,7 +160,7 @@ var main = () => {
   }
 
 // --- Add name page ---
-  var savePlayerName = () => {
+  const savePlayerName = () => {
     buildDom(`
             <section>
                 <h1>Your score</h1>
@@ -187,7 +187,7 @@ var main = () => {
   }
 
 // --- Game over page ---
-  var gameOverPage = () => {
+  const gameOverPage = () => {
     buildDom(`
             <section id="game-over-page">
                 <img id="game-over-img" src="./img/game-over.gif">
@@ -204,8 +204,8 @@ var main = () => {
     document.querySelector('.home-page-button').addEventListener('click', homePage)
   }
 
-  var getLeaderboardData = () => {
-    let keys = Object.keys(window.localStorage);
+  const getLeaderboardData = () => {
+    const keys = Object.keys(window.localStorage);
     let leaderboardArray = [];
     if (keys.length<10) {
       for (let z=0; z<10-keys.length; z++) {
